@@ -373,6 +373,7 @@ import PartWeights from './language/Parts.js'
 import ValueWeights from './language/Values.js'
 import PropertyWeights from './language/Properties.js'
 import SampleProblems from './validations/sample.js'
+
 import { format } from 'date-fns'
 
 import _ from 'lodash'
@@ -623,30 +624,33 @@ export default {
             payload: JSON.stringify(vm.validations, replacer)
         };
 
-        sandbox.addEventListener('message', function(e) {
+        sandbox.addEventListener('message', function(messageEvent) {
           this.state = 'idle';
 
-          if(e.data.fitness > vm.fitness){
+          let event = messageEvent;
+          console.log(event.data);
+
+          if(event.data.fitness > vm.fitness){
             vm.logOutput(`Found a more fit function`);
-            vm.logOutput(`Fitness: ${e.data.fitness}\nProgram:\n${e.data.code}` );
+            vm.logOutput(`Fitness: ${event.data.fitness}\nProgram:\n${event.data.code}` );
 
             vm.foundGeneration = vm.totalGenerations;
-            vm.fitness = e.data.fitness;
-            vm.mostFitProgram = e.data.code;
-            vm.mostFitAST = e.data.ast;
-            vm.nextGenPrograms.unshift(e.data);
+            vm.fitness = event.data.fitness;
+            vm.mostFitProgram = event.data.code;
+            vm.mostFitAST = event.data.ast;
+            vm.nextGenPrograms.unshift(event.data);
 
             if(vm.learningEnabled){
-              vm.learnProgram(e.data.ast, e.data.fitness);
+              vm.learnProgram(event.data.ast, event.data.fitness);
             }
-          } else if(vm.fitness > 1 && e.data.fitness >= (vm.fitness-1) ){
-             vm.nextGenPrograms.unshift(e.data);
+          } else if(vm.fitness > 1 && event.data.fitness >= (vm.fitness-1) ){
+             vm.nextGenPrograms.unshift(event.data);
 
              if(vm.learningEnabled){
                let shouldLearn = chance.weighted([true, false],[1,vm.additionalLearnRate]);
 
                if(shouldLearn){
-                  vm.learnProgram(e.data.ast, e.data.fitness);
+                  vm.learnProgram(event.data.ast, event.data.fitness);
                }
             }
           }
@@ -657,8 +661,8 @@ export default {
           
         });
 
-        sandbox.addEventListener('error', function(e) {
-          console.log('An error occcurred in worker: ' + e.message);
+        sandbox.addEventListener('error', function(errorEvent) {
+          console.log('An error occcurred in worker: ' + errorEvent.message);
           //vm.logOutput(`Fitness: Error\nProgram:\n${e.data.program}` );
         });
 
