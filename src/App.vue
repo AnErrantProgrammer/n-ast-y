@@ -626,9 +626,7 @@ export default {
 
         sandbox.addEventListener('message', function(messageEvent) {
           this.state = 'idle';
-
           let event = messageEvent;
-          console.log(event.data);
 
           if(event.data.fitness > vm.fitness){
             vm.logOutput(`Found a more fit function`);
