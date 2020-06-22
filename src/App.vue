@@ -654,7 +654,7 @@ export default {
           }
 
           while(vm.nextGenPrograms.length > vm.maxLearnedPrograms){
-            vm.maxLearnedPrograms.pop();
+            vm.nextGenPrograms.pop();
           }
           
         });
