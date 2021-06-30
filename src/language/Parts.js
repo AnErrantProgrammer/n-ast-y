@@ -40,6 +40,16 @@ PartWeights.ExistingIdentifier = [
     [1]
 ];
 
+PartWeights.MathIdentifier = [
+    ['MathIdentifier'],
+    [1]
+];
+
+PartWeights.AbsIdentifier = [
+    ['AbsIdentifier'],
+    [1]
+];
+
 PartWeights.ConsoleIdentifier = [
     ['ConsoleIdentifier'],
     [1]

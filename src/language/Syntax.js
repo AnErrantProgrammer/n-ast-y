@@ -84,6 +84,30 @@ Syntax.ExistingIdentifier = [{
 }];
 
 
+Syntax.MathIdentifier = [{
+    key: 'type',
+    value: 'Identifier',
+    type: 'Static'
+}, {
+    key: 'name',
+    value: 'Math',
+    type: 'Static'
+}, {
+    key: 'properties',
+    value: null,
+    type: 'Static'
+}];
+
+Syntax.AbsIdentifier = [{
+    key: 'type',
+    value: 'Identifier',
+    type: 'Static'
+}, {
+    key: 'name',
+    value: 'abs',
+    type: 'Static'
+}];
+
 Syntax.ConsoleIdentifier = [{
     key: 'type',
     value: 'Identifier',
@@ -171,8 +195,7 @@ Syntax.CallExpression = [{
 }, {
     key: 'arguments',
     value: null,
-    min: 0,
-    type: 'Body'
+    type: 'Arguments'
 }];
 
 Syntax.BinaryExpression = [{
