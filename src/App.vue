@@ -1047,6 +1047,18 @@ export default {
             nodeParts[syntaxPart.key] = syntaxPart.value.call(nodeParts);
           } else if (syntaxPart.type === "KeyFunction") {
             nodeParts[syntaxPart.key] = vm.createNode(syntaxPart.value.call(nodeParts), nodeParts, depth);
+          } else if (syntaxPart.type === "List") {
+            let length = chance.integer({ min: 0, max: 10 });
+            let elements = [];
+            
+            for(let i = 0; i < length; i++){
+              let elementKey = chance.weighted(syntaxPart.value[0], syntaxPart.value[1]);
+              let elementValue = vm.selectedWeightedPart(elementKey);
+              elements.push(vm.createNode(elementValue));
+            }
+
+            nodeParts[syntaxPart.key] = elements;
+
           } else if (syntaxPart.type === "Arguments") {
             let argumentPattern = [];
 

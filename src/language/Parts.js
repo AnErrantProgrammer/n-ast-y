@@ -20,6 +20,11 @@ PartWeights.Program = [
     [1]
 ];
 
+PartWeights.ArrayExpression = [
+    ['ArrayExpression'],
+    [1]
+];
+
 PartWeights.VariableDeclaration = [
     ['VariableDeclaration'],
     [1]

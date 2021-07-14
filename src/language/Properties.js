@@ -48,9 +48,15 @@ PropertyWeights.MemberExpression.object = [
   [0, 1],
 ];
 
+PropertyWeights.ArrayExpression = {};
+PropertyWeights.ArrayExpression.elements = [
+  ["Identifier"],
+  [1],
+];
+
 PropertyWeights.ExpressionStatement = {};
 PropertyWeights.ExpressionStatement.expression = [
-  ["BinaryExpression", "CallExpression", "MemberExpression", "AssignmentExpression", "UpdateExpression"],
+  ["BinaryExpression", "CallExpression", "MemberExpression", "AssignmentExpression", "UpdateExpression", "ArrayExpression"],
   [1, 1, 0, 5, 1],
 ];
 PropertyWeights.AssignmentExpression = {};

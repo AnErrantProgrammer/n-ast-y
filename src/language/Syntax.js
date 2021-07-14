@@ -18,6 +18,7 @@ Syntax.Program = [{
     type: "Static"
 }];
 
+
 Syntax.VariableDeclaration = [{
     key: 'type',
     value: 'VariableDeclaration',
@@ -83,6 +84,16 @@ Syntax.ExistingIdentifier = [{
     type: 'Function'
 }];
 
+
+Syntax.ArrayExpression = [{
+    key: 'type',
+    value: 'ArrayExpression',
+    type: 'Static'
+}, {
+    key: 'elements',
+    value: null,
+    type: 'List'
+}];
 
 Syntax.MathIdentifier = [{
     key: 'type',
