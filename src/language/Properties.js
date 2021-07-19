@@ -57,7 +57,7 @@ PropertyWeights.ArrayExpression.elements = [
 PropertyWeights.ExpressionStatement = {};
 PropertyWeights.ExpressionStatement.expression = [
   ["BinaryExpression", "CallExpression", "MemberExpression", "AssignmentExpression", "UpdateExpression", "ArrayExpression"],
-  [1, 1, 0, 5, 1],
+  [1, 1, 0, 5, 1, 1],
 ];
 PropertyWeights.AssignmentExpression = {};
 PropertyWeights.AssignmentExpression.left = [["ExistingIdentifier"], [1]];
