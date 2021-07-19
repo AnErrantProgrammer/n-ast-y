@@ -1411,7 +1411,7 @@ PropertyWeights.MemberExpression.object = [["ConsoleIdentifier", "MathIdentifier
 PropertyWeights.ArrayExpression = {};
 PropertyWeights.ArrayExpression.elements = [["Identifier"], [1]];
 PropertyWeights.ExpressionStatement = {};
-PropertyWeights.ExpressionStatement.expression = [["BinaryExpression", "CallExpression", "MemberExpression", "AssignmentExpression", "UpdateExpression", "ArrayExpression"], [1, 1, 0, 5, 1]];
+PropertyWeights.ExpressionStatement.expression = [["BinaryExpression", "CallExpression", "MemberExpression", "AssignmentExpression", "UpdateExpression", "ArrayExpression"], [1, 1, 0, 5, 1, 1]];
 PropertyWeights.AssignmentExpression = {};
 PropertyWeights.AssignmentExpression.left = [["ExistingIdentifier"], [1]];
 PropertyWeights.AssignmentExpression.right = [["Literal", "BinaryExpression", "ExistingIdentifier"], [1, 3, 2]];
@@ -2198,4 +2198,4 @@ window.app = new vue_runtime_esm["default"]({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=app.e5eadc38.js.map
+//# sourceMappingURL=app.25b54366.js.map
