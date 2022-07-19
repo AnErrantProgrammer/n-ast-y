@@ -5,7 +5,7 @@
       <b-button variant="success" @click="teachProgram">Teach</b-button>
     </b-modal>
 
-    <b-modal id="select-validation" title="Sample Validations">
+    <b-modal id="select-validation" title="Sample Tests">
       <p>{{ selectedPart }}</p>
       <ul class="list-unstyled">
         <span
@@ -51,12 +51,12 @@
     <b-navbar toggleable="lg" type="dark" variant="dark">
       <b-navbar-brand>n-ast-y</b-navbar-brand>
       <b-navbar-nav>
+        <b-button size="sm" class="mr-1" variant="primary" v-b-modal.select-validation>Select Test</b-button>&nbsp;&nbsp;
         <b-button size="sm" class="mr-1" variant="success" v-bind:disabled="isRunning" @click="start">Run</b-button>&nbsp;&nbsp;
         <b-button size="sm" class="mr-1" variant="warning" v-bind:disabled="!isRunning" @click="stop">Pause</b-button>&nbsp;&nbsp;
         <b-button size="sm" class="mr-1" variant="danger" v-bind:disabled="programState == 'stopped'" @click="restart">Reset</b-button>&nbsp;&nbsp;
 
-        <b-dropdown id="dropdown-1" left text="View" size="sm" variant="primary">
-          <b-dropdown-item v-b-modal.select-validation>Validation Selector</b-dropdown-item>
+        <b-dropdown id="dropdown-1" left text="Validator" size="sm" variant="primary">
           <b-dropdown-item v-b-modal.validate-program>Solution Validator</b-dropdown-item>
           <b-dropdown-item v-b-modal.teacher>Teacher</b-dropdown-item>
         </b-dropdown>
@@ -445,7 +445,7 @@ export default {
       maxAttempts: 500,
       sandboxCount: 0,
       sandboxes: [],
-      maxSandboxCount: 250,
+      maxSandboxCount: 200,
       mainLoopInterval: null,
       selectedPart: null,
       sampleValidations: SampleProblems,
@@ -1047,6 +1047,8 @@ export default {
             nodeParts[syntaxPart.key] = syntaxPart.value.call(nodeParts);
           } else if (syntaxPart.type === "KeyFunction") {
             nodeParts[syntaxPart.key] = vm.createNode(syntaxPart.value.call(nodeParts), nodeParts, depth);
+          } else if (syntaxPart.type === "AfterFunction") {
+            syntaxPart.value.call(nodeParts);
           } else if (syntaxPart.type === "List") {
             let length = chance.integer({ min: 0, max: 10 });
             let elements = [];

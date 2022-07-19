@@ -193,6 +193,12 @@ Syntax.AssignmentExpression = [{
     key: 'right',
     value: null,
     type: 'Dynamic'
+}, {
+    key: 'after',
+    value: function(){
+        console.log(this.scope);
+    },
+    type: "AfterFunction"
 }];
 
 Syntax.CallExpression = [{
